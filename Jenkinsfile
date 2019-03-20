@@ -1,11 +1,8 @@
-def label = "R-pod-${UUID.randomUUID().toString()}"
-    node(label){
+    node{
 
       stage("Checkout Repository"){
         checkout scm
       }
-
-      container('rtestthat'){
 
         stage("R Unit Tests"){
           echo 'Beginning R unit testing'
@@ -31,6 +28,4 @@ def label = "R-pod-${UUID.randomUUID().toString()}"
 
           echo 'R Packaging complete'
         }
-      }
-
   }
