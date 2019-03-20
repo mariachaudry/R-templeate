@@ -34,6 +34,14 @@ podTemplate(label: label,
 
           echo 'R report generated complete'
         }
+
+        stage("R Packaging"){
+          echo 'Beginning R packaging for the model'
+
+          sh "Rscript template_r_project/packages/model_package.R"
+
+          echo 'R Packaging complete'
+        }
       }
 
       container('docker'){
