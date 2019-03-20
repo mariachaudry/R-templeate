@@ -1,15 +1,4 @@
 def label = "R-pod-${UUID.randomUUID().toString()}"
-
-DOCKER_IMAGE_NAME='rmg-gbi-de-r-template-project'
-
-podTemplate(label: label,
-  containers: [
-    containerTemplate(name: 'rtestthat', image: 'gcr.io/alert-inquiry-205619/rmg-gbi-de-build-r-testthat:latest', ttyEnabled: true),
-    containerTemplate(name: 'docker', image: 'docker:17.03.1-ce', ttyEnabled: true)
-  ],
-  volumes: [
-    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
-  ]) {
     node(label){
 
       stage("Checkout Repository"){
@@ -45,4 +34,3 @@ podTemplate(label: label,
       }
 
   }
-}
