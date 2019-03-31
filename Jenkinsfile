@@ -3,7 +3,7 @@ DOCKER_IMAGE_NAME='rmg-gbi-de-r-template-project'
 
 podTemplate(label: label,
   containers: [
-    containerTemplate(name: 'rtemplate_v1', image: 'rtemplate_v1:latest', ttyEnabled: true),
+    containerTemplate(name: 'rtemplate', image: 'rtemplate_v1:latest', ttyEnabled: true),
     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true)
   ],
   volumes: [
@@ -15,7 +15,7 @@ podTemplate(label: label,
         checkout scm
       }
 
-      container('rtemplate_v1'){
+      container('rtemplate'){
 
         stage("R Unit Tests"){
           echo 'Beginning R unit testing'
