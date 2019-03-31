@@ -44,26 +44,6 @@ podTemplate(label: label,
 
       }
 
-#      container('docker'){
-#        stage("Docker Image Build"){
-#
-#            echo 'Building and deploying in docker'
-#
-#            withCredentials([[$class: 'UsernamePasswordMultiBinding',
-#                            credentialsId: 'nexus-docker',
-#                            usernameVariable: 'DOCKER_USER',
-#                            passwordVariable: 'DOCKER_PASSWORD']]) {
-#
-#              sh "docker login -u ${env.DOCKER_USER} -p ${env.DOCKER_PASSWORD} ${NEXUS_URL}"
-#              sh "docker build -t ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER} -f Dockerfile ."
-#              sh "docker tag ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER} ${NEXUS_URL}/rmg/gbi/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
-#              sh "docker push ${NEXUS_URL}/rmg/gbi/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
-#
-#              echo 'Docker R image successfully uploaded to registry'
-#        }
-#      }
-#    }
-
   stage('Create Docker images') {
       container('docker') {
         withCredentials([[$class: 'UsernamePasswordMultiBinding',
