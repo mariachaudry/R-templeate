@@ -1,4 +1,5 @@
-def label = "R-pod-${UUID.randomUUID().toString()}"
+//def label = "R-pod-${UUID.randomUUID().toString()}"
+def label = "master"
 DOCKER_IMAGE_NAME='rmg-gbi-de-r-template-project'
 
 podTemplate(label: label,
