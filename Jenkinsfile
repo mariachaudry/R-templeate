@@ -7,7 +7,7 @@ podTemplate(label: label,
     containerTemplate(name: 'docker', image: 'docker', command: 'cat', ttyEnabled: true)
   ],
   volumes: [
-    hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
+    hostPathVolume(hostPath: '/var/jenkins_home/docker.sock', mountPath: '/var/jenkins_home/docker.sock')
   ]) {
     node(label){
 
