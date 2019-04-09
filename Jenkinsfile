@@ -1,5 +1,5 @@
-//def label = "R-pod-${UUID.randomUUID().toString()}"
-def label = "master"
+def label = "R-pod-${UUID.randomUUID().toString()}"
+
 DOCKER_IMAGE_NAME='rmg-gbi-de-r-template-project'
 
 podTemplate(label: label,
@@ -48,13 +48,13 @@ podTemplate(label: label,
   stage('Create Docker images') {
       container('docker') {
         withCredentials([[$class: 'UsernamePasswordMultiBinding',
-          credentialsId: 'Dockerhub',
+          credentialsId: 'dockerhub',
           usernameVariable: 'DOCKER_HUB_USER',
           passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
           sh """
             docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
             docker build -t ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER} -f Dockerfile ."
-            docker push     rmg/gbi/${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
+            docker push     ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
             """
         }
       }
