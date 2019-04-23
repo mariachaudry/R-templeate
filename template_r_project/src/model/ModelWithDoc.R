@@ -8,4 +8,4 @@
 #' @examples
 #' model_data(param,data)
 #' measure_distance(mod,data)
-source("/home/rstudio/src/src/model/model.R")
+source("/home/rstudio/src/model/model.R")
