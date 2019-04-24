@@ -62,7 +62,7 @@ podTemplate(label: label,
           sh """
             docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
             docker build -t ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER} -f Dockerfile ."
-            docker push     ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
+            docker push ${DOCKER_IMAGE_NAME}:${BUILD_NUMBER}"
             """
   	  }
  	 }
